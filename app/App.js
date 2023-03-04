@@ -44,6 +44,7 @@ export default function App() {
         title={recording ? 'Stop Recording' : 'Start Recording'}
         onPress={recording ? stopRecording : startRecording}
       />
+      <Text>hi there</Text>
       <StatusBar style="auto" />
     </View>
   );
