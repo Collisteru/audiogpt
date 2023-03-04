@@ -35,8 +35,27 @@ export default function App() {
     });
     const uri = recording.getURI();
     console.log('Recording stopped and stored at', uri);
+
+    setRecordedAudio(uri);
+  }
+
+  const [recordedAudio, setRecordedAudio] = React.useState();
+
+  async function playRecordedAudio() {
+    console.log('Playing recorded audio..');
+    const soundObject = new Audio.Sound();
+    try {
+      await soundObject.loadAsync({ uri: recordedAudio });
+      await soundObject.playAsync();
+      console.log('Playing audio..');
+    } catch (error) {
+      console.log('Error playing audio: ', error);
+    }
+    console.log('Stopped recording..');
+
   }
   
+
   return (
     <View style={styles.container}>
       <Text>AUDIOxGPT</Text>
@@ -44,7 +63,11 @@ export default function App() {
         title={recording ? 'Stop Recording' : 'Start Recording'}
         onPress={recording ? stopRecording : startRecording}
       />
-      <Text>hi there</Text>
+
+      {recordedAudio && (
+        <Button title="Play Recorded Audio" onPress={playRecordedAudio} />
+      )}
+
       <StatusBar style="auto" />
     </View>
   );
