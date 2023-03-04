@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 import { Audio } from 'expo-av';
 
 import * as React from 'react';
@@ -53,8 +53,12 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <Text>AUDIOxGPT</Text>
+    <View style={styles.textStyle}>
+      <View style={styles.container}>
+        <Text style={styles.textInput} placeholder>AUDIOxGPT, the voice assistant who actually knows the answer!</Text>
+        <Button title="Start your journey"/>
+      </View>
+      
       <Button
         title={recording ? 'Stop Recording' : 'Start Recording'}
         onPress={recording ? stopRecording : startRecording}
@@ -69,9 +73,20 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    flexDirection: 'column',
   },
+  textStyle: {
+    borderWidth: 5, borderColor: '#202003', marginTop: 45, padding: 10,
+  },
+  textInput: {
+    borderWidth: 3,
+    borderColor: '#C0C20A',
+    width: '100%',
+    marginLeft: 1,
+    marginRight: 1,
+    fontSize: 20
+  }
 });
