@@ -35,6 +35,7 @@ export default function App() {
     });
     const uri = recording.getURI();
     console.log('Recording stopped and stored at', uri);
+
     setRecordedAudio(uri);
   }
 
@@ -52,6 +53,10 @@ export default function App() {
     }
   }
 
+
+  }
+  
+
   return (
     <View style={styles.textStyle}>
       <View style={styles.container}>
@@ -63,9 +68,11 @@ export default function App() {
         title={recording ? 'Stop Recording' : 'Start Recording'}
         onPress={recording ? stopRecording : startRecording}
       />
+
       {recordedAudio && (
         <Button title="Play Recorded Audio" onPress={playRecordedAudio} />
       )}
+
       <StatusBar style="auto" />
     </View>
   );
