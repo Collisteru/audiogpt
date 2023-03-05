@@ -8,8 +8,6 @@
 2. git checkout branch_name_here
 3. git pull
 
-## MAKE SURE YOU'RE ALWAYS IN YOUR BRANCH!!!
-
 ### merging branch
 1. git pull origin main
 2. git add .
